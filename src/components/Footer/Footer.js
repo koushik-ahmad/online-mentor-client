@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaRegCopyright } from "react-icons/fa";
 
 const Footer = () => {
     return (
         <>
-            {/*    <!-- Component: Five Columns Footer with Logo --> */}
             <footer className="w-full text-slate-500">
-                {/*      <!-- Main footer --> */}
-                <div className="border-t border-slate-200 bg-slate-100 pt-16 pb-12 text-sm">
+                <div className="border-t border-slate-200 bg-slate-50 pt-16 pb-8 text-sm">
                     <div className="container mx-auto px-6">
                         <div className="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
                             <div
@@ -19,7 +18,7 @@ const Footer = () => {
                                     aria-label="WindUI logo"
                                     aria-current="page"
                                     className="mb-6 flex items-center gap-2 whitespace-nowrap text-lg font-medium leading-6 text-slate-700 focus:outline-none"
-                                    href="javascript:void(0)"
+                                    to='/'
                                 >
                                     <svg
                                         width="300"
@@ -42,7 +41,7 @@ const Footer = () => {
                                             fill="rgba(255, 255, 255, .2)"
                                         />
                                     </svg>
-                                    Online Mentor 
+                                    Online Mentor
                                 </Link>
                                 <p>
                                     Our online courses are built in partnership with technology leaders and are relevant to industry needs.
@@ -62,7 +61,7 @@ const Footer = () => {
                                 <ul>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Features
@@ -70,7 +69,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Customers
@@ -78,7 +77,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Why us?
@@ -86,7 +85,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Pricing
@@ -107,7 +106,7 @@ const Footer = () => {
                                 <ul>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Documentation
@@ -115,7 +114,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Training
@@ -123,7 +122,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             System status
@@ -131,7 +130,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             FAQ's
@@ -139,7 +138,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Help Center
@@ -160,7 +159,7 @@ const Footer = () => {
                                 <ul>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             About us
@@ -168,7 +167,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Careers
@@ -176,7 +175,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Leadership
@@ -184,7 +183,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Blog
@@ -192,7 +191,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Events
@@ -213,7 +212,7 @@ const Footer = () => {
                                 <ul>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Contact
@@ -221,7 +220,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Support
@@ -229,7 +228,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Partners
@@ -237,7 +236,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2 leading-6">
                                         <Link
-                                            href="javascript:void(0)"
+                                            to='/'
                                             className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                                         >
                                             Join research
@@ -246,10 +245,15 @@ const Footer = () => {
                                 </ul>
                             </nav>
                         </div>
+                        <hr />
+                        <div className='pt-5'>
+                            <p className='flex items-center justify-center text-md font-serif gap-1'>
+                                <FaRegCopyright />
+                                Copyright 2023. <span className='text-emerald-600'>Online Mentor.</span> All rights reserved</p>
+                        </div>
                     </div>
                 </div>
             </footer>
-            {/*    <!-- End Five Columns Footer with Logo --> */}
         </>
     );
 };
