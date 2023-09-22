@@ -1,13 +1,70 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../contexts/AuthContext';
+import { toast } from 'react-hot-toast';
 
 const Register = () => {
+    const [error, setError] = useState(null);
+    const { user, createUser, updateName, googleSignIn } = useContext(UserContext);
+    const [users, setUsers] = useState({});
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, email, password);
+
+        // password validation 
+        if (password.length < 6) {
+            setError('Password should be 6 character or more');
+            return;
+        }
+
+        // createUser
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('Register success');
+
+                updateName(name)
+                    .then(() => {
+                        toast.success('Name updated');
+                        form.reset();
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        toast.error(error.message);
+                    });
+
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error(error.message);
+            });
+    };
+
+    const handleGoogle = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error(error.message);
+            });
+    };
+
+
 
     return (
         <div className='py-10'>
             <div className="w-full mx-auto border-2 max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
                 <h1 className="text-2xl font-bold text-center">Register</h1>
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-1 text-sm">
                         <label htmlFor="name">Full Name </label>
                         <input type="name" name="name" id="name" placeholder="Your Name" className="w-full px-4 py-3 border-2 rounded-md " required />
@@ -20,13 +77,16 @@ const Register = () => {
                         <label htmlFor="password">Password</label>
                         <input type="password" name="password" id="password" placeholder="Your Password" className="w-full px-4 py-3 border-2 rounded-md " required />
                     </div>
+                    <div className='text-red-600'>
+                        {error}
+                   </div>
                     <button className="btn btn-primary block w-full p-3 text-center rounded-md ">Register</button>
                 </form>
                 <div className="text-center">
                     <p className="px-3 text-lg font-semibold">Login with </p>
                 </div>
                 <div className="flex justify-center space-x-4">
-                    <button className="w-full flex items-center justify-center gap-x-3 py-2.5 border border-black rounded-3xl hover:bg-gray-50 duration-150 active:bg-gray-100">
+                    <button onClick={handleGoogle} className="w-full flex items-center justify-center gap-x-3 py-2.5 border border-black rounded-3xl hover:bg-gray-50 duration-150 active:bg-gray-100">
                         <svg className="w-5 h-5" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clipPath="url(#clip0_17_40)">
                                 <path d="M47.532 24.5528C47.532 22.9214 47.3997 21.2811 47.1175 19.6761H24.48V28.9181H37.4434C36.9055 31.8988 35.177 34.5356 32.6461 36.2111V42.2078H40.3801C44.9217 38.0278 47.532 31.8547 47.532 24.5528Z" fill="#4285F4" />

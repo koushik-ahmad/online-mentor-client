@@ -1,13 +1,51 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../contexts/AuthContext';
+import toast from 'react-hot-toast';
+
 
 const Login = () => {
-    
+    const { user, loginWithEmail, googleSignIn } = useContext(UserContext);
+
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+
+        loginWithEmail(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error(error.message);
+            });
+
+    }
+
+    // googleSignIn 
+    const handleGoogle = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error(error.message);
+            });
+    };
+
+
     return (
         <div className='py-10'>
             <div className="w-full mx-auto border-2 max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
                 <h1 className="text-2xl font-bold text-center">Login</h1>
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-1 text-sm">
                         <label htmlFor="email">Email </label>
                         <input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-4 py-3 border-2 rounded-md " required />
@@ -25,7 +63,7 @@ const Login = () => {
                     <p className="px-3 text-lg font-semibold">Login with </p>
                 </div>
                 <div className="flex justify-center space-x-4">
-                    <button  className="w-full flex items-center justify-center gap-x-3 py-2.5 border border-black rounded-3xl hover:bg-gray-50 duration-150 active:bg-gray-100">
+                    <button onClick={handleGoogle} className="w-full flex items-center justify-center gap-x-3 py-2.5 border border-black rounded-3xl hover:bg-gray-50 duration-150 active:bg-gray-100">
                         <svg className="w-5 h-5" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clipPath="url(#clip0_17_40)">
                                 <path d="M47.532 24.5528C47.532 22.9214 47.3997 21.2811 47.1175 19.6761H24.48V28.9181H37.4434C36.9055 31.8988 35.177 34.5356 32.6461 36.2111V42.2078H40.3801C44.9217 38.0278 47.532 31.8547 47.532 24.5528Z" fill="#4285F4" />
