@@ -4,8 +4,8 @@ import { UserContext } from '../../contexts/AuthContext';
 import { toast } from 'react-hot-toast';
 
 const Register = () => {
-    const [error, setError] = useState(null);
     const { user, createUser, updateName, googleSignIn } = useContext(UserContext);
+    const [error, setError] = useState(null);
     const [users, setUsers] = useState({});
 
     const handleSubmit = event => {

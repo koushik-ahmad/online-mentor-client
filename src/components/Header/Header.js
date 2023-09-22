@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../contexts/AuthContext';
+
 // import logo from '/src/assets/mentor.png';
 
 const Header = () => {
+    const { user, logOut } = useContext(UserContext);
     const [isToggleOpen, setIsToggleOpen] = useState(false)
+
 
     return (
         <div>
@@ -106,26 +110,34 @@ const Header = () => {
                                         <span>Services</span>
                                     </Link>
                                 </li>
-                                <li role="none" className="flex items-stretch">
-                                    <Link
-                                        to='/addservice'
-                                        role="menuitem"
-                                        aria-haspopup="false"
-                                        className="flex items-center lg:px-2 py-4 transition-colors duration-300 hover:text-emerald-500 "
-                                    >
-                                        <span>Add Service</span>
-                                    </Link>
-                                </li>
-                                <li role="none" className="flex items-stretch">
-                                    <Link
-                                        to='/reviews'
-                                        role="menuitem"
-                                        aria-haspopup="false"
-                                        className="flex items-center lg:px-2 py-4 transition-colors duration-300 hover:text-emerald-500 "
-                                    >
-                                        <span>My Reviews</span>
-                                    </Link>
-                                </li>
+                                {
+                                    user?.email ?
+                                        <>
+                                            <li role="none" className="flex items-stretch">
+                                                <Link
+                                                    to='/addservice'
+                                                    role="menuitem"
+                                                    aria-haspopup="false"
+                                                    className="flex items-center lg:px-2 py-4 transition-colors duration-300 hover:text-emerald-500 "
+                                                >
+                                                    <span>Add Service</span>
+                                                </Link>
+                                            </li>
+                                            <li role="none" className="flex items-stretch">
+                                                <Link
+                                                    to='/reviews'
+                                                    role="menuitem"
+                                                    aria-haspopup="false"
+                                                    className="flex items-center lg:px-2 py-4 transition-colors duration-300 hover:text-emerald-500 "
+                                                >
+                                                    <span>My Reviews</span>
+                                                </Link>
+                                            </li>
+                                        </>
+                                        :
+                                        ' '
+                                }
+
                                 <li role="none" className="flex items-stretch">
                                     <Link
                                         to='/blog'
@@ -138,16 +150,29 @@ const Header = () => {
                                 </li>
                             </ul>
                             <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0 gap-2">
-                                <Link to='/login'>
-                                    <button className='btn btn-sm btn-success'>
-                                        <span>Login</span>
-                                    </button>
-                                </Link>
-                                <Link to='/register'>
-                                    <button className='btn btn-sm btn-success'>
-                                        <span>Register</span>
-                                    </button>
-                                </Link>
+                                {
+                                    user?.email ?
+                                        <>
+                                            <Link>
+                                                <button onClick={logOut} className='btn btn-sm btn-success'>
+                                                    <span>logOut</span>
+                                                </button>
+                                            </Link>
+                                        </>
+                                        :
+                                        <>
+                                            <Link to='/login'>
+                                                <button className='btn btn-sm btn-success hidden lg:flex'>
+                                                    <span>Login</span>
+                                                </button>
+                                            </Link>
+                                            <Link to='/register'>
+                                                <button className='btn btn-sm btn-success'>
+                                                    <span>Register</span>
+                                                </button>
+                                            </Link>
+                                        </>
+                                }
                             </div>
                         </nav>
                     </div>

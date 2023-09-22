@@ -8,11 +8,14 @@ import Blog from '../components/Pages/Blog/Blog';
 import Services from '../components/Pages/Services/Services';
 import Reviews from '../components/Pages/Reviews/Reviews';
 import AddService from '../components/Pages/AddService/AddService';
+import PrivateRoute from './PrivateRoute';
+import ErrorPage from '../components/Pages/ErrorPage/ErrorPage';
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -32,7 +35,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/reviews',
-                element: <Reviews></Reviews>,
+                element: <PrivateRoute><Reviews></Reviews></PrivateRoute>,
             },
             {
                 path: '/blog',
