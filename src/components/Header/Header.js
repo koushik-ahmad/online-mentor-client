@@ -8,7 +8,6 @@ const Header = () => {
     const { user, logOut } = useContext(UserContext);
     const [isToggleOpen, setIsToggleOpen] = useState(false)
 
-
     return (
         <div>
             <>
