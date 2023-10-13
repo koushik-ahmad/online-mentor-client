@@ -19,7 +19,7 @@ const Card = ({ service }) => {
                 <div className="p-6">
                     <h2 className='text-2xl text-blue-500 pb-2'>{name}</h2>
                     <p className='text-xl text-success pb-2'> Price: ${price}</p>
-                    <p> Description:
+                    <p> Description: 
                         {
                             description.slice(0, 100) + '...'
                         }
