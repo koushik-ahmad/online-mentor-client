@@ -10,6 +10,8 @@ import Reviews from '../components/Pages/Reviews/Reviews';
 import AddService from '../components/Pages/AddService/AddService';
 import PrivateRoute from './PrivateRoute';
 import ErrorPage from '../components/Pages/ErrorPage/ErrorPage';
+import Service from '../components/Pages/Services/Service';
+
 
 export const router = createBrowserRouter([
     {
@@ -30,8 +32,13 @@ export const router = createBrowserRouter([
                 element: <Services></Services>,
             },
             {
+                path: '/service/:id',
+                element: <Service></Service>,
+                loader: ({ params }) => fetch(`http://localhost:5000/service/${params.id}`)
+            },
+            {
                 path: '/addservice',
-                element: <AddService></AddService>,
+                element: <PrivateRoute><AddService></AddService></PrivateRoute>,
             },
             {
                 path: '/reviews',

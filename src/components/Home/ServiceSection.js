@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import { Link } from 'react-router-dom';
 
-const Service = () => {
+const ServiceSection = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
@@ -36,4 +36,4 @@ const Service = () => {
     );
 };
 
-export default Service;
+export default ServiceSection;

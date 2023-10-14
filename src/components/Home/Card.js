@@ -1,25 +1,28 @@
 import React from 'react';
 import { FaStarHalfAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const Card = ({ service }) => {
     const { _id, name, img, rating, price, description } = service;
-    console.log(service);
+    // console.log(service);
 
     return (
         <>
             <div className="overflow-hidden rounded bg-blue-50 text-slate-500 shadow-xl shadow-gray-300 p-5 border-2 border-2 ">
                 <figure>
-                    <img
-                        src={img}
-                        className="aspect-video rounded w-full "
-                        alt=""
-                    />
+                    <PhotoProvider>
+                        <PhotoView src={img}>
+                            <img src={img} className="aspect-video rounded w-full" alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
                 </figure>
 
                 <div className="p-6">
                     <h2 className='text-2xl text-blue-500 pb-2'>{name}</h2>
                     <p className='text-xl text-success pb-2'> Price: ${price}</p>
-                    <p> Description: 
+                    <p> Description:
                         {
                             description.slice(0, 100) + '...'
                         }
@@ -37,9 +40,11 @@ const Card = ({ service }) => {
                     </div>
                 </div>
                 <div className="flex justify-end gap-2 p-2 pt-0">
-                    <button className="inline-flex items-center justify-center btn btn-success ">
-                        Details Course
-                    </button>
+                    <Link to={`/service/${_id}`}>
+                        <button className="inline-flex items-center justify-center btn btn-success ">
+                            Details Course
+                        </button>
+                    </Link>
                 </div>
             </div>
         </>
