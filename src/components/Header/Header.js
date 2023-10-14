@@ -152,11 +152,9 @@ const Header = () => {
                                 {
                                     user?.email ?
                                         <>
-                                            <Link>
-                                                <button onClick={logOut} className='btn btn-sm btn-success'>
-                                                    <span>logOut</span>
-                                                </button>
-                                            </Link>
+                                            <button onClick={logOut} className='btn btn-sm btn-success'>
+                                                <span>logOut</span>
+                                            </button>
                                         </>
                                         :
                                         <>
