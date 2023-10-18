@@ -6,15 +6,13 @@ import { UserContext } from '../../../contexts/AuthContext';
 const Review = ({ rv }) => {
     const { user } = useContext(UserContext);
     const { _id, serviceId, img, name, email, displayName, photoURL, review } = rv;
-    console.log(review);
-
-
+    // console.log(review);
 
     return (
         <div className="pt-3">
             <div className="flex gap-4">
                 <div className="flex-none">
-                    <img alt="profile" src={user?.photoURL ? user?.photoURL : 'https://i.ibb.co/cFbh1q5/avatar.jpg'} className="mx-auto object-cover rounded-full border-2 border-success h-16 w-16 " />
+                    <img alt="profile" src={photoURL ? photoURL : 'https://i.ibb.co/cFbh1q5/avatar.jpg'} className="mx-auto object-cover rounded-full border-2 border-success h-16 w-16 " />
                 </div>
                 <div className="w-5/6">
                     <h2 className="text-lg font-semibold">{displayName}</h2>
