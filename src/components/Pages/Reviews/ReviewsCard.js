@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { UserContext } from '../../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
-const ReviewsCard = ({ rvs }) => {
+const ReviewsCard = ({ rvs, handleDelete }) => {
     const { user } = useContext(UserContext);
-    const {_id, img, displayName, photoURL, review} = rvs;
+    const { _id, img, displayName, photoURL, review } = rvs;
+
+    // console.log(rvs);
+    
 
     return (
         <div className="w-2/3 mx-auto py-4">
@@ -25,11 +29,14 @@ const ReviewsCard = ({ rvs }) => {
                             </div>
                         </div>
                         <div className='flex justify-end items-end gap-5'>
-                            <button className='btn bg-red-400 w-1/3'>Delete</button>
-                            <button className='btn bg-green-400  w-1/3'>Edit</button>
+                            <button onClick={() => handleDelete(rvs)} className='btn bg-red-400 w-1/3'>Delete</button>
+                            
+                            <Link to={`/update/${rvs._id}`} className='btn bg-green-400  w-1/3'>
+                                <button>Edit</button>
+                            </Link>
                         </div>
                     </div>
-                    <p className="text-sm ">Review:{review}</p>
+                    <p className="text-sm ">Review: {review}</p>
                 </div>
             </div>
         </div>
