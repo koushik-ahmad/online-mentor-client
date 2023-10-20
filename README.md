@@ -1,8 +1,8 @@
 # Online Mentor 
 
-Live Site: [https://online-mentor-a5d39.web.app/](Online-Mentor-Client).
+Live Site: [Online-Mentor-Client](https://online-mentor-a5d39.web.app/).
 
-Server Site: [https://online-mentor-server.vercel.app/](Online-Mentor-Server).
+Server Site: [Online-Mentor-Server](https://online-mentor-server.vercel.app/).
 
 ### This project uses the following technologies:
 
