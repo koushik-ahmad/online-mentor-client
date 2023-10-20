@@ -7,8 +7,8 @@ import Review from './Review';
 import { UserContext } from '../../../contexts/AuthContext';
 
 const Service = () => {
-    const { user } = useContext(UserContext);
     const service = useLoaderData();
+    const { user } = useContext(UserContext);
     const [review, setReview] = useState([]);
     const { _id, img, name, price, rating, description } = service;
     // console.log(service);
@@ -44,35 +44,36 @@ const Service = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch(`http://localhost:5000/reviewId?serviceId=${service._id}`)
             .then(res => res.json())
             .then(data => setReview(data))
-    }, [review]);
-
+    }, [review, service._id]);
 
 
     return (
         <div className='grid lg:grid-cols-2 p-10 gap-5'>
-            <div className="overflow-hidden rounded bg-blue-50 text-slate-500 p-5 border-2">
-                <figure>
-                    <PhotoProvider>
-                        <PhotoView src={img}>
-                            <img src={img} className="aspect-video rounded w-full" alt="" />
-                        </PhotoView>
-                    </PhotoProvider>
-                </figure>
-                <div className="p-6">
-                    <h2 className='text-2xl text-blue-500 pb-2'>{name}</h2>
-                    <p className='text-xl text-success pb-2'> Price: ${price}</p>
-                    <p> Description: {description} </p>
-                    <div className='flex items-center gap-10 pt-2'>
-                        <p className='text-md'> Rating: {rating} </p>
-                        <div className='flex gap-2 text-yellow-400'>
-                            <FaStarHalfAlt />
-                            <FaStarHalfAlt />
-                            <FaStarHalfAlt />
-                            <FaStarHalfAlt />
-                            <FaStarHalfAlt />
+            <div className="overflow-hidden ">
+                <div className='border-2 rounded bg-blue-50 text-slate-500'>
+                    <figure>
+                        <PhotoProvider>
+                            <PhotoView src={img}>
+                                <img src={img} className="aspect-video rounded w-full p-5" alt="" />
+                            </PhotoView>
+                        </PhotoProvider>
+                    </figure>
+                    <div className="p-6">
+                        <h2 className='text-2xl text-blue-500 pb-2'>{name}</h2>
+                        <p className='text-xl text-success pb-2'> Price: ${price}</p>
+                        <p> Description: {description} </p>
+                        <div className='flex items-center gap-10 pt-2'>
+                            <p className='text-md'> Rating: {rating} </p>
+                            <div className='flex gap-2 text-yellow-400'>
+                                <FaStarHalfAlt />
+                                <FaStarHalfAlt />
+                                <FaStarHalfAlt />
+                                <FaStarHalfAlt />
+                                <FaStarHalfAlt />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,12 +109,14 @@ const Service = () => {
                         }
                     </form>
                 </div>
-                {
-                    review.map(rv => <Review
-                        key={rv._id}
-                        rv={rv}
-                    ></Review>)
-                }
+                <>
+                    {
+                        review.map(rv => <Review
+                            key={rv._id}
+                            rv={rv}
+                        ></Review>)
+                    }
+                </>
             </div>
         </div>
     );

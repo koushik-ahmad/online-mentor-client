@@ -15,7 +15,7 @@ const ServiceSection = () => {
         <div>
             <div className='text-center'>
                 <h2 className='text-3xl text-success font-bold'>Our Latest Service</h2>
-                <p className='w-2/5 mx-auto pb-8'>We are committed to providing our customers with the best possible online course. We believe that everyone should have access to high-quality education.</p>
+                <p className='lg:w-2/5 md:w-2/3 w-full px-4 mx-auto pb-8'>We are committed to providing our customers with the best possible online course. We believe that everyone should have access to high-quality education.</p>
             </div>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8 p-10'>
                 {

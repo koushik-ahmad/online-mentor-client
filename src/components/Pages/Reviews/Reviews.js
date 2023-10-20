@@ -1,14 +1,18 @@
-import React, { useContext, useState } from 'react';
-import { FaStar } from 'react-icons/fa';
+import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../contexts/AuthContext';
-import { useLoaderData } from 'react-router-dom';
 import ReviewsCard from './ReviewsCard';
+import { Link } from 'react-router-dom';
 
 const Reviews = () => {
-    const review = useLoaderData([]);
-    const [displayReview, setDisplayReview] = useState(review);
     const { user } = useContext(UserContext);
-    // console.log(review);
+    const [displayReview, setDisplayReview] = useState({});
+
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/review?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => setDisplayReview(data))
+    }, [user?.email]);
 
     const handleDelete = review => {
         const agree = window.confirm(`Are you sure you want to deleted: ${review.name}`);
@@ -30,8 +34,6 @@ const Reviews = () => {
         }
     }
 
-    console.log(displayReview.length);
-
     return (
         <div className='py-5'>
             {
@@ -43,8 +45,10 @@ const Reviews = () => {
 
                     ></ReviewsCard>)
                     :
-                    <div className='text-2xl text-center pt-5 pb-60'>
-                        <h2>No review here.</h2>
+                    <div className='text-center pt-5 pb-60'>
+                        <h2 className='text-2xl '>No review here...</h2>
+                        <p><Link className='underline text-success' to='/services'>services</Link></p>
+                        
                     </div>
             }
         </div>

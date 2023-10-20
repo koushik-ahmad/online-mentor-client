@@ -11,7 +11,7 @@ const ReviewsCard = ({ rvs, handleDelete }) => {
     
 
     return (
-        <div className="w-2/3 mx-auto py-4">
+        <div className="lg:w-2/3 md:w-2/3 w-full px-4 mx-auto py-4">
             <div className="flex gap-4 border-2 rounded py-4 pl-4">
                 <div className="flex-none">
                     <img alt="profile" src={user?.photoURL ? user?.photoURL : 'https://i.ibb.co/cFbh1q5/avatar.jpg'} className="mx-auto object-cover rounded-full border-2 border-success h-16 w-16 " />
