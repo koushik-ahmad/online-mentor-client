@@ -39,7 +39,7 @@ const AuthContext = ({ children }) => {
 
     // 5. logOut 
     const logOut = () => {
-        localStorage.removeItem('token');
+        localStorage.removeItem('online-token');
         return signOut(auth);
     }
 

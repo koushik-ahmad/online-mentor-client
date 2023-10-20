@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FaStar } from 'react-icons/fa';
+import { FaStar, FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { UserContext } from '../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ const ReviewsCard = ({ rvs, handleDelete }) => {
     const { _id, img, displayName, photoURL, review } = rvs;
 
     // console.log(rvs);
-    
+
 
     return (
         <div className="lg:w-2/3 md:w-2/3 w-full px-4 mx-auto py-4">
@@ -28,11 +28,19 @@ const ReviewsCard = ({ rvs, handleDelete }) => {
                                 <FaStar />
                             </div>
                         </div>
-                        <div className='flex justify-end items-end gap-5'>
-                            <button onClick={() => handleDelete(rvs)} className='btn bg-red-400 w-1/3'>Delete</button>
-                            
-                            <Link to={`/update/${rvs._id}`} className='btn bg-green-400  w-1/3'>
-                                <button>Edit</button>
+                        <div className='flex justify-end items-end gap-2'>
+                            <Link className='btn bg-red-400 w-2/5'>
+                                <div className='flex gap-2'>
+                                    <button onClick={() => handleDelete(rvs)} >Delete</button>
+                                    <FaTrashAlt />
+                                </div>
+                            </Link>
+
+                            <Link to={`/update/${rvs._id}`} className='btn bg-green-400  w-2/5'>
+                                <div className='flex gap-2'>
+                                    <button>Edit</button>
+                                    <FaEdit />
+                                </div>
                             </Link>
                         </div>
                     </div>

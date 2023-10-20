@@ -4,15 +4,27 @@ import ReviewsCard from './ReviewsCard';
 import { Link } from 'react-router-dom';
 
 const Reviews = () => {
-    const { user } = useContext(UserContext);
+    const { user , logOut} = useContext(UserContext);
     const [displayReview, setDisplayReview] = useState({});
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/review?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => setDisplayReview(data))
-    }, [user?.email]);
+        fetch(`http://localhost:5000/review?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('online-token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403){
+                    return logOut();
+                };
+                return res.json()
+            })
+            .then(data => {
+                console.log('received', data);
+                setDisplayReview(data)
+            })
+    }, [user?.email, logOut]);
 
     const handleDelete = review => {
         const agree = window.confirm(`Are you sure you want to deleted: ${review.name}`);
@@ -48,7 +60,7 @@ const Reviews = () => {
                     <div className='text-center pt-5 pb-60'>
                         <h2 className='text-2xl '>No review here...</h2>
                         <p><Link className='underline text-success' to='/services'>services</Link></p>
-                        
+
                     </div>
             }
         </div>

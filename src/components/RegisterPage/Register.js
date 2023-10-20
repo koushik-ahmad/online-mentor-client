@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/AuthContext';
 import { toast } from 'react-hot-toast';
 
@@ -7,6 +7,8 @@ const Register = () => {
     const { user, createUser, updateName, googleSignIn } = useContext(UserContext);
     const [error, setError] = useState(null);
     const [users, setUsers] = useState({});
+
+    const navigate = useNavigate();
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -26,9 +28,28 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 toast.success('Register success');
 
+                const currentUser = {
+                    email: user.email
+                }
+
+                // get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('online-token', data.token);
+                        navigate('/');
+                    });
+
+                // name update 
                 updateName(name)
                     .then(() => {
                         toast.success('Name updated');
@@ -38,7 +59,7 @@ const Register = () => {
                         console.error(error);
                         toast.error(error.message);
                     });
-
+                
             })
             .catch(error => {
                 console.error(error);
@@ -50,7 +71,25 @@ const Register = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
-                console.log(user);
+
+                const currentUser = {
+                    email: user.email
+                }
+
+                // get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('online-token', data.token);
+                        navigate('/');
+                    });
             })
             .catch(error => {
                 console.error(error);
@@ -79,7 +118,7 @@ const Register = () => {
                     </div>
                     <div className='text-red-600'>
                         {error}
-                   </div>
+                    </div>
                     <button className="btn btn-primary block w-full p-3 text-center rounded-md ">Register</button>
                 </form>
                 <div className="text-center">
