@@ -226,10 +226,13 @@ const Footer = () => {
                             </nav>
                         </div>
                         <hr />
-                        <div className='pt-5'>
+                        <div className='pt-5 text-xs'>
                             <p className='flex items-center justify-center text-md font-serif gap-1'>
                                 <FaRegCopyright />
-                                Copyright 2023. <span className='text-emerald-600 font-semibold'>Online Mentor.</span> All rights reserved</p>
+                                Copyright 2023.
+                                <span className='text-emerald-600 font-semibold'>Online Mentor.</span>
+                                All rights reserved
+                            </p>
                         </div>
                     </div>
                 </div>

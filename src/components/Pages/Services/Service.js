@@ -98,7 +98,7 @@ const Service = () => {
                 </div>
 
                 <div >
-                    <form onSubmit={handleReview} className='grid grid-cols-2 justify-center items-end gap-8 '>
+                    <form onSubmit={handleReview} className='grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 justify-center items-end gap-5'>
                         <div className="max-w-md" id="textarea" >
                             <div className="mb-2 block">
                                 <Label htmlFor="review" value=" " />

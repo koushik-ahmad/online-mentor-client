@@ -144,8 +144,8 @@ const Register = () => {
                         Continue with Google
                     </button>
                 </div>
-                <p className="text-center sm:px-6 pt-4">Don't have an account?
-                    <Link to='/login' className="underline"> Create an account</Link>
+                <p className="text-center sm:px-6 pt-4">Already have an account?
+                    <Link to='/login' className="underline"> Please login</Link>
                 </p>
             </div>
         </div>
