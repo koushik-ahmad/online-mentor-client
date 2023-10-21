@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom';
 import useTitle from '../../../hooks/useTitle';
 
 const Reviews = () => {
-    const { user , logOut} = useContext(UserContext);
+    const { user, logOut } = useContext(UserContext);
     const [displayReview, setDisplayReview] = useState({});
 
     useTitle('My Reviews');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/review?email=${user.email}`, {
+        fetch(`https://online-mentor-server.vercel.app/review?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('online-token')}`
             }
         })
             .then(res => {
-                if (res.status === 401 || res.status === 403){
+                if (res.status === 401 || res.status === 403) {
                     return logOut();
                 };
                 return res.json()
@@ -32,7 +32,7 @@ const Reviews = () => {
         const agree = window.confirm(`Are you sure you want to deleted: ${review.name}`);
 
         if (agree) {
-            fetch(`http://localhost:5000/review/${review._id}`, {
+            fetch(`https://online-mentor-server.vercel.app/review/${review._id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())

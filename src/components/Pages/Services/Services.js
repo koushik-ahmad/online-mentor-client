@@ -16,7 +16,7 @@ const Services = () => {
     const pages = Math.ceil(count / size);
 
     useEffect(() => {
-        const url = `http://localhost:5000/services?page=${page}&size=${size}`
+        const url = `https://online-mentor-server.vercel.app/services?page=${page}&size=${size}`
         fetch(url)
             .then(res => res.json())
             .then(data => {

@@ -10,7 +10,7 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     useTitle('login');
-    
+
     const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event => {
@@ -30,7 +30,7 @@ const Login = () => {
                 // console.log(currentUser);
 
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://online-mentor-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
@@ -64,7 +64,7 @@ const Login = () => {
                 }
 
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://online-mentor-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

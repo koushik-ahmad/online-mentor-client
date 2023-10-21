@@ -29,7 +29,7 @@ const Service = () => {
         const details = { serviceId, img, name, email, displayName, photoURL, review }
 
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://online-mentor-server.vercel.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -48,7 +48,7 @@ const Service = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviewId?serviceId=${service._id}`)
+        fetch(`https://online-mentor-server.vercel.app/reviewId?serviceId=${service._id}`)
             .then(res => res.json())
             .then(data => setReview(data))
     }, [review, service._id]);

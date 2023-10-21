@@ -20,7 +20,7 @@ const UpdateReview = ({ rvs }) => {
         const review = form.review.value;
         const details = { review };
 
-        fetch(`http://localhost:5000/review/${reviewUser._id}`, {
+        fetch(`https://online-mentor-server.vercel.app/review/${reviewUser._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

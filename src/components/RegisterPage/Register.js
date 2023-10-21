@@ -9,7 +9,7 @@ const Register = () => {
     const [error, setError] = useState(null);
     const [users, setUsers] = useState({});
     useTitle('Register');
-    
+
     const navigate = useNavigate();
 
     const handleSubmit = event => {
@@ -37,7 +37,7 @@ const Register = () => {
                 }
 
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://online-mentor-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
@@ -61,7 +61,7 @@ const Register = () => {
                         console.error(error);
                         toast.error(error.message);
                     });
-                
+
             })
             .catch(error => {
                 console.error(error);
@@ -79,7 +79,7 @@ const Register = () => {
                 }
 
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://online-mentor-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
