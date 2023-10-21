@@ -29,14 +29,15 @@ const ReviewsCard = ({ rvs, handleDelete }) => {
                             </div>
                         </div>
                         <div className='flex justify-end items-end gap-2'>
-                            <Link className='btn bg-red-400 w-2/5'>
+
+                            <button onClick={() => handleDelete(rvs)} className='btn bg-red-400 w-2/5'>
                                 <div className='flex gap-2'>
-                                    <button onClick={() => handleDelete(rvs)} >Delete</button>
+                                    <button>Delete</button>
                                     <FaTrashAlt />
                                 </div>
-                            </Link>
+                            </button>
 
-                            <Link to={`/update/${rvs._id}`} className='btn bg-green-400  w-2/5'>
+                            <Link to={`/update/${rvs._id}`} className='btn bg-green-400 w-2/5'>
                                 <div className='flex gap-2'>
                                     <button>Edit</button>
                                     <FaEdit />
