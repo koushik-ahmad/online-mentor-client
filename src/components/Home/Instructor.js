@@ -11,8 +11,8 @@ const Instructor = () => {
                 <p className='lg:w-2/5 md:w-2/3 w-full px-6 mx-auto text-center'>Being an online class instructor involves teaching and facilitating learning in a virtual or remote environment. Just like your physical classroom.</p>
             </div>
 
-            <div className=''>
-                <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2'>
+            <div className='px-8 pt-5'>
+                <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
                     <div className="card w-full mx-auto bg-base-100 shadow-xl border-2 pt-8">
                         <figure><img src={img1} alt="Shoes" /></figure>
                         <div className="card-body text-center">

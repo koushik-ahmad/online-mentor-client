@@ -28,17 +28,17 @@ const ReviewsCard = ({ rvs, handleDelete }) => {
                                 <FaStar />
                             </div>
                         </div>
-                        <div className='flex justify-end items-end gap-2'>
+                        <div className='flex justify-end items-end gap-2 '>
 
                             <button onClick={() => handleDelete(rvs)} className='btn bg-red-400 w-2/5'>
-                                <div className='flex gap-2'>
+                                <div className='flex gap-1 text-xs items-center'>
                                     <button>Delete</button>
                                     <FaTrashAlt />
                                 </div>
                             </button>
 
                             <Link to={`/update/${rvs._id}`} className='btn bg-green-400 w-2/5'>
-                                <div className='flex gap-2'>
+                                <div className='flex gap-1 text-xs items-center'>
                                     <button>Edit</button>
                                     <FaEdit />
                                 </div>
