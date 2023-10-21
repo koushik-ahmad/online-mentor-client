@@ -5,12 +5,16 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 import Review from './Review';
 import { UserContext } from '../../../contexts/AuthContext';
+import useTitle from '../../../hooks/useTitle';
 
 const Service = () => {
     const service = useLoaderData();
     const { user } = useContext(UserContext);
     const [review, setReview] = useState([]);
     const { _id, img, name, price, rating, description } = service;
+    
+    useTitle('Add Review');
+
     // console.log(service);
 
 
@@ -40,7 +44,7 @@ const Service = () => {
                 }
             })
 
-        console.log(details);
+        // console.log(details);
     }
 
     useEffect(() => {

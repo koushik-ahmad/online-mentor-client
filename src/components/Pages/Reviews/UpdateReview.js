@@ -3,12 +3,14 @@ import { UserContext } from '../../../contexts/AuthContext';
 import { FaStar } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import { Label, Textarea } from 'flowbite-react';
+import useTitle from '../../../hooks/useTitle';
 
 const UpdateReview = ({ rvs }) => {
     const reviewUser = useLoaderData();
     const { user } = useContext(UserContext);
     const { _id, img, displayName, name, photoURL, review } = reviewUser;
 
+    useTitle('Update Review')
 
     console.log(reviewUser);
 

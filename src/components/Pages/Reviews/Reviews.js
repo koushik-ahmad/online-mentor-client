@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../contexts/AuthContext';
 import ReviewsCard from './ReviewsCard';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../hooks/useTitle';
 
 const Reviews = () => {
     const { user , logOut} = useContext(UserContext);
     const [displayReview, setDisplayReview] = useState({});
 
+    useTitle('My Reviews');
 
     useEffect(() => {
         fetch(`http://localhost:5000/review?email=${user.email}`, {
@@ -21,7 +23,7 @@ const Reviews = () => {
                 return res.json()
             })
             .then(data => {
-                console.log('received', data);
+                // console.log('received', data);
                 setDisplayReview(data)
             })
     }, [user?.email, logOut]);
@@ -35,7 +37,7 @@ const Reviews = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    // console.log(data);
                     if (data.deletedCount > 0) {
                         alert('Review deleted');
                         const remainingReview = displayReview.filter(rev => rev._id !== review._id);
@@ -54,7 +56,6 @@ const Reviews = () => {
                         key={rvs._id}
                         rvs={rvs}
                         handleDelete={handleDelete}
-
                     ></ReviewsCard>)
                     :
                     <div className='text-center pt-5 pb-60'>

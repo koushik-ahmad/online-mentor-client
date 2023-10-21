@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Card from '../../Home/Card';
 import './service.css'
+import useTitle from '../../../hooks/useTitle';
 
 const Services = () => {
     // const { services, count } = useLoaderData();
     const [services, setServices] = useState([]);
+    useTitle('Services');
 
     const [count, setCount] = useState(0);
     const [page, setPage] = useState(0);
@@ -20,11 +22,11 @@ const Services = () => {
             .then(data => {
                 setCount(data.count);
                 setServices(data.services);
-                console.log(data);
+                // console.log(data);
             })
     }, [page, size]);
 
-    console.log(services);
+    // console.log(services);
 
     return (
         <>

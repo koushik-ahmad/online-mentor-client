@@ -2,12 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/AuthContext';
 import { toast } from 'react-hot-toast';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
     const { user, createUser, updateName, googleSignIn } = useContext(UserContext);
     const [error, setError] = useState(null);
     const [users, setUsers] = useState({});
-
+    useTitle('Register');
+    
     const navigate = useNavigate();
 
     const handleSubmit = event => {

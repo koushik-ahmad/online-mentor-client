@@ -2,13 +2,15 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
+import useTitle from '../../hooks/useTitle';
 
 
 const Login = () => {
     const { user, loginWithEmail, googleSignIn } = useContext(UserContext);
     const location = useLocation();
     const navigate = useNavigate();
-
+    useTitle('login');
+    
     const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event => {

@@ -3,8 +3,12 @@ import Slider from './Slider';
 import Instructor from './Instructor';
 import Message from './Message';
 import ServiceSection from './ServiceSection';
+import useTitle from '../../hooks/useTitle';
 
 const Home = () => {
+
+    useTitle('Home');
+
     return (
         <div>
             <Slider></Slider>
