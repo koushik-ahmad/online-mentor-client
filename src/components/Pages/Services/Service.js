@@ -12,7 +12,7 @@ const Service = () => {
     const { user } = useContext(UserContext);
     const [review, setReview] = useState([]);
     const { _id, img, name, price, rating, description } = service;
-    
+
     useTitle('Add Review');
 
     // console.log(service);
@@ -115,10 +115,15 @@ const Service = () => {
                 </div>
                 <>
                     {
-                        review.map(rv => <Review
-                            key={rv._id}
-                            rv={rv}
-                        ></Review>)
+                        review.length > 0 ?
+                            review.map(rv => <Review
+                                key={rv._id}
+                                rv={rv}
+                            ></Review>)
+                            :
+                            <div className='pt-8'>
+                                <h2 className='text-xl text-success'>No review here...</h2>
+                            </div>
                     }
                 </>
             </div>
