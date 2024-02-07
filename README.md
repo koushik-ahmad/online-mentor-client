@@ -1,13 +1,13 @@
-# Online Mentor 
+# Online Mentor
 
-Live Site: [Online-Mentor-Client](https://online-mentor-a5d39.web.app/).
+Live Site: [Online-Mentor-Client](https://online-mentor-app.web.app/).
 
 Server Site: [Online-Mentor-Server](https://online-mentor-server.vercel.app/).
 
 ### This project uses the following technologies:
 
 - Tailwind CSS for styling
-- Firebase for authentication 
+- Firebase for authentication
 - React Router DOM for routing
 - Database for MongoDB
 - React Icon for icons
